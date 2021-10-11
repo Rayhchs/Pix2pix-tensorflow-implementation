@@ -68,4 +68,4 @@ If you use this code for your research, please cite the original pix2pix paper:
 
 ## Reference
  
- https://github.com/awslabs/open-data-docs/tree/main/docs/landsat-pds
+https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix
