@@ -19,11 +19,11 @@ Cuda 11.1, CuDNN 8.1.1
       
 * Train
 
-	  python -m main <filename> train
+	  python -m main <txt filename> train
 
 * Test
 
-	  python -m main <filename> test
+	  python -m main <txt filename> test
 
 * Arguments
 
