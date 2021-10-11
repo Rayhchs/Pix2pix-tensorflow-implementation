@@ -7,7 +7,7 @@ model: pix2pix
 """
 import tensorflow.compat.v1 as tf
 import numpy as np
-from utils import load_data
+from utils import *
 from PIL import Image
 import os, sys
 import random
@@ -15,10 +15,12 @@ import time
 
 class pix2pix():
     
-    def __init__(self, sess, mode):
-
-        self.mode = mode
+    def __init__(self, sess, args):
         self.sess = sess
+        self.mode = args.mode.lower()
+        self.epochs = args.epoch
+        self.batch_size = args.batch_size
+        self.do_resize = args.do_resize
         self.k_initilizer = tf.random_normal_initializer(0, 0.02)
         self.b_initilizer = tf.random_normal_initializer(1, 0.02)
         self.bulid_model()
@@ -210,7 +212,7 @@ class pix2pix():
         loss_g = loss_g_gan + loss_g_l1 * L1_lambda
         return loss_g, loss_d
     
-    def train(self, image_lists, epochs, batch_size):
+    def train(self, image_lists):
         """
         par image_lists: list of image paths
         par epochs: epochs
@@ -230,8 +232,8 @@ class pix2pix():
         #self.saver.restore(self.sess, tf.train.latest_checkpoint('./checkpoint'))
         
         # Training
-        for i in range(epochs):
-            batch_num = int(np.ceil(len(image_lists) / batch_size))
+        for i in range(self.epochs):
+            batch_num = int(np.ceil(len(image_lists) / self.batch_size))
             batch_list = np.array_split(image_lists, batch_num)
             random.shuffle(batch_list)
             t1 = time.time()
@@ -251,7 +253,7 @@ class pix2pix():
             loss_ds = sum(loss_ds) / len(batch_list)
             loss_gs = sum(loss_gs) / len(batch_list)
                 
-            print("Epoch: %d/%d: discriminator loss: %.4f; generator loss: %.4f; training time: %.1fs" % ((i + 1), epochs, loss_ds, loss_gs, time.time()-t1))
+            print("Epoch: %d/%d: discriminator loss: %.4f; generator loss: %.4f; training time: %.1fs" % ((i + 1), self.epochs, loss_ds, loss_gs, time.time()-t1))
         
         # Save loss
             summary = self.sess.run(self.merged, feed_dict={self.x_: batch_x, self.y_: batch_y})
@@ -278,6 +280,11 @@ class pix2pix():
             batch_x, _ = load_data(np.array([images[j]]), self.mode)
             g = self.sess.run(self.g_, feed_dict={self.x_: batch_x})
             g = (np.array(g[0]) + 1) * 127.5
-            im.append(Image.fromarray(np.uint8(g)))
+
+            if self.do_resize:
+                g = resize(images[j], g).eval()
+                
+            g = Image.fromarray(np.uint8(g))
+            im.append(g)
 
         return im, images                

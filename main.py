@@ -23,9 +23,10 @@ parser = ArgumentParser(usage=None, formatter_class=RawTextHelpFormatter, descri
 
 parser.add_argument("filename", help="txt file which includes image directions")
 parser.add_argument("mode", help="train or test")
-parser.add_argument("-e", "--epoch", type=int, default=400, dest="epoch")
+parser.add_argument("-e", "--epoch", type=int, default=200, dest="epoch")
 parser.add_argument("-b", "--batch_size", type=int, default=1, dest="batch_size")
 parser.add_argument("-s", "--save_path", type=str, default=None, dest="save_path")
+parser.add_argument("-r", "--do_resize", type=bool, default=False, dest="do_resize")
 args = parser.parse_args()
 
 def main():
@@ -44,8 +45,8 @@ def main():
         print("All images are loaded")
                 
         with tf.Session() as sess:
-            model = pix2pix(sess, args.mode.lower())
-            model.train(image_lists, args.epoch, args.batch_size)
+            model = pix2pix(sess, args)
+            model.train(image_lists)
             
     elif args.mode.lower() == 'test':
         with open(image_path) as f: 
@@ -56,7 +57,7 @@ def main():
         print("All images are loaded")
                 
         with tf.Session() as sess:
-            model = pix2pix(sess, args.mode.lower())
+            model = pix2pix(sess, args)
             g_imgs, o_imgs = model.test(image_lists)
         output_path = save_data(g_imgs, o_imgs, args.save_path)
         print('Saved in {}'.format(output_path))

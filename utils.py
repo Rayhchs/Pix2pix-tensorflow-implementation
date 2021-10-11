@@ -14,7 +14,7 @@ from tensorflow.keras.preprocessing import image
 def random_crop(images, labels):
     from tensorflow.keras.preprocessing import image
     inputs = np.concatenate((images, labels), axis=2)
-    ranges = random.uniform(0.9, 1)
+    ranges = random.uniform(0.8, 1)
     outputs = image.random_zoom(inputs, zoom_range=(ranges,ranges), row_axis=0, col_axis=1, channel_axis=2)
     image = outputs[:,:,0:3]
     label = outputs[:,:,3:6]
@@ -43,7 +43,14 @@ def load_data(images, mode):
         
     return g_imgs, d_imgs
         
-def save_data(im, images, save_path=None):
+def resize(o_img_path, g_img):
+    o_img = np.array(image.load_img(o_img_path))
+    m, n, _ = o_img.shape
+    g_img = tf.image.resize(g_img, [m, n])
+
+    return g_img
+    
+def save_data(im, images, save_path):
     if save_path == None:
         save_path = os.getcwd() + '\\result'
         for i in range(len(images)):
