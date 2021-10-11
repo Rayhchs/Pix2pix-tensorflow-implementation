@@ -5,8 +5,7 @@ utils
 
 @author: Ray
 """
-import os
-import random
+import os, random
 import numpy as np
 import tensorflow.compat.v1 as tf
 from tensorflow.keras.preprocessing import image

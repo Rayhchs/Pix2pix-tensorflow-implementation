@@ -5,13 +5,11 @@ model: pix2pix
 
 @author: Ray
 """
+import os, sys, random, time
 import tensorflow.compat.v1 as tf
 import numpy as np
 from utils import *
 from PIL import Image
-import os, sys
-import random
-import time
 
 class pix2pix():
     
