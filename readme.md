@@ -14,8 +14,8 @@ Cuda 11.1, CuDNN 8.1.1
 ## Getting Started
 * Clone this repo
 
-      git clone 
-      cd 
+      git clone https://github.com/Rayhchs/Pix2pix-tensorflow-implementation.git
+      cd Pix2pix-tensorflow-implementation
       
 * Train
 
