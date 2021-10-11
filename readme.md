@@ -1,5 +1,5 @@
 # Implementation of pix2pix
-A tensorflow implementation of [Image-to-Image Translation Using Conditional Adversarial Networks](https://github.com/phillipi/pix2pix). 
+A tensorflow implementation of [Image-to-Image Translation Using Conditional Adversarial Networks](https://github.com/phillipi/pix2pix). Since the limintation of my own device, this repo only implement aerial photo to google map.
 
 
 
