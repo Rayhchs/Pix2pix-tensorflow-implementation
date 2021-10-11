@@ -43,7 +43,15 @@ A tensorflow implementation of [Image-to-Image Translation Using Conditional Adv
 ## Results
 Here is the results generated from this implementation:
 
-* Aerial map:
+* Aerial map (train for 200 epochs):
+
+| Aerial image | Generated map | Ground truth |
+| ------------- | ------------- | ------------- |
+| <img src="https://github.com/Rayhchs/Pix2pix-tensorflow-implementation/blob/main/test/3.jpg" width="250"> | <img src="https://github.com/Rayhchs/Pix2pix-tensorflow-implementation/blob/main/result/3.jpg" width="250"> | <img src="https://github.com/Rayhchs/Pix2pix-tensorflow-implementation/blob/main/test/label_3.jpg" width="250">|
+| <img src="https://github.com/Rayhchs/Pix2pix-tensorflow-implementation/blob/main/test/6.jpg" width="250"> | <img src="https://github.com/Rayhchs/Pix2pix-tensorflow-implementation/blob/main/result/6.jpg" width="250"> | <img src="https://github.com/Rayhchs/Pix2pix-tensorflow-implementation/blob/main/test/label_6.jpg" width="250">|
+| <img src="https://github.com/Rayhchs/Pix2pix-tensorflow-implementation/blob/main/test/24.jpg" width="250"> | <img src="https://github.com/Rayhchs/Pix2pix-tensorflow-implementation/blob/main/result/24.jpg" width="250"> | <img src="https://github.com/Rayhchs/Pix2pix-tensorflow-implementation/blob/main/test/label_24.jpg" width="250">|
+| <img src="https://github.com/Rayhchs/Pix2pix-tensorflow-implementation/blob/main/test/33.jpg" width="250"> | <img src="https://github.com/Rayhchs/Pix2pix-tensorflow-implementation/blob/main/result/33.jpg" width="250"> | <img src="https://github.com/Rayhchs/Pix2pix-tensorflow-implementation/blob/main/test/label_33.jpg" width="250"> |
+| <img src="https://github.com/Rayhchs/Pix2pix-tensorflow-implementation/blob/main/test/45.jpg" width="250"> | <img src="https://github.com/Rayhchs/Pix2pix-tensorflow-implementation/blob/main/result/45.jpg" width="250"> | <img src="https://github.com/Rayhchs/Pix2pix-tensorflow-implementation/blob/main/test/label_45.jpg" width="250">|
 
 ## Acknowledgements
 Code heavily borrows from [pix2pix](https://github.com/phillipi/pix2pix) and [pix2pix-tensorflow](https://github.com/yenchenlin/pix2pix-tensorflow). Thanks for the excellent work!
