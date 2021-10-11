@@ -1,13 +1,14 @@
 # Implementation of pix2pix
-A tensorflow implementation of [Image-to-Image Translation Using Conditional Adversarial Networks](https://github.com/phillipi/pix2pix). 
+A tensorflow implementation of [Image-to-Image Translation Using Conditional Adversarial Networks](https://github.com/phillipi/pix2pix). This repo triees to construct original pix2pix model.
 
 
 
 ## Requisite
 
-python 3.8
-tensorflow 2.5.0
-Cuda 11.1, CuDNN 8.1.1
+* python 3.8
+* tensorflow 2.5.0
+* Cuda 11.1
+* CuDNN 8.1.1
 
 	  pip install -r requirements.txt
 
@@ -34,9 +35,10 @@ Cuda 11.1, CuDNN 8.1.1
  
  | Optional arguments | prefix_char | Description |
  | ------------- | ------------- |------------- |
- | --epoch | -e | epochs, default=400 |
+ | --epoch | -e | epochs, default=200 |
  | --batch_size | -b | batch size, default=1 |
- | --save_path | -s | Path to save testing result, default= .\result |
+ | --save_path | -s | path to save testing result, default= .\result |
+ | --do_resize | -r | resize to original size or not, default=False |
       
 ## Results
 Here is the results generated from this implementation:
