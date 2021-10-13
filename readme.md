@@ -22,6 +22,10 @@ A tensorflow implementation of [Image-to-Image Translation Using Conditional Adv
 
 	  python -m main <txt filename> train
 
+For training detail:
+
+	  tensorboard --logdir=./log
+
 * Test
 
 	  python -m main <txt filename> test
