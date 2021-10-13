@@ -17,6 +17,7 @@ def random_crop(images, labels):
     outputs = image.random_zoom(inputs, zoom_range=(ranges,ranges), row_axis=0, col_axis=1, channel_axis=2)
     image = outputs[:,:,0:3]
     label = outputs[:,:,3:6]
+    
     return image, label
 
 def load_data(images, mode):

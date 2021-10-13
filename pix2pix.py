@@ -141,6 +141,7 @@ class pix2pix():
                                                   training=True,
                                                   gamma_initializer=self.b_initilizer)
                 h = tf.nn.leaky_relu(h, alpha=0.2)
+
         return h 
     
     def g_decoder_block(self, inputs, filters, i, name='g_decoder_block'):
@@ -169,6 +170,7 @@ class pix2pix():
                     h = tf.nn.relu(h)
                 else:
                     h = tf.nn.relu(h)
+
         return h
         
     def d_block(self, inputs, filters, strides, padding='same', name='d_block'):
@@ -195,6 +197,7 @@ class pix2pix():
                                                   training=True,
                                                   gamma_initializer=self.b_initilizer)
                 h = tf.nn.leaky_relu(h, alpha=0.2)
+                
         return h
     
     def loss(self, real, fake, y, g, L1_lambda=100):
